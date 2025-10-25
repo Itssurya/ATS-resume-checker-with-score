@@ -229,21 +229,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Flask](https://flask.palletsprojects.com/) web framework
 - [Sentence Transformers](https://www.sbert.net/) for semantic analysis
 
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/P-ATS/issues)
-- **Documentation**: [Wiki](https://github.com/yourusername/P-ATS/wiki)
-- **Email**: support@atsanalyzer.com
-
-## 🔄 Changelog
-
-### v1.0.0 (Current)
-- Initial release with core ATS functionality
-- Hugging Face model integration
-- PostgreSQL with Neon.tech
-- User authentication and subscription system
-- Hybrid scoring algorithm
-
----
 
 **Made with ❤️ for better hiring decisions**
