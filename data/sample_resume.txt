@@ -1,0 +1,62 @@
+JOHN DOE
+Software Engineer
+john.doe@email.com | (555) 123-4567 | linkedin.com/in/johndoe
+
+PROFESSIONAL SUMMARY
+Experienced software engineer with 5+ years of experience in full-stack development, 
+specializing in Python, JavaScript, and cloud technologies. Proven track record of 
+delivering scalable web applications and leading development teams.
+
+TECHNICAL SKILLS
+Programming Languages: Python, JavaScript, Java, SQL
+Frameworks: Django, Flask, React, Node.js, Spring Boot
+Databases: PostgreSQL, MySQL, MongoDB, Redis
+Cloud Platforms: AWS, Azure, Google Cloud
+Tools: Git, Docker, Kubernetes, Jenkins, Terraform
+Methodologies: Agile, Scrum, DevOps, CI/CD
+
+PROFESSIONAL EXPERIENCE
+
+Senior Software Engineer | TechCorp Inc. | 2021 - Present
+• Led development of microservices architecture serving 1M+ users
+• Implemented CI/CD pipelines reducing deployment time by 60%
+• Mentored 3 junior developers and conducted code reviews
+• Built RESTful APIs using Django and PostgreSQL
+• Optimized database queries improving response time by 40%
+
+Software Engineer | StartupXYZ | 2019 - 2021
+• Developed full-stack web applications using Python and React
+• Collaborated with product team to define technical requirements
+• Implemented automated testing increasing code coverage to 90%
+• Built data processing pipelines using Apache Kafka
+• Participated in agile development process with 2-week sprints
+
+Junior Developer | WebSolutions Ltd. | 2018 - 2019
+• Created responsive web interfaces using HTML, CSS, and JavaScript
+• Maintained legacy PHP applications and databases
+• Assisted in debugging and troubleshooting production issues
+• Learned modern development practices and version control
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of Technology | 2014 - 2018
+GPA: 3.8/4.0
+
+CERTIFICATIONS
+• AWS Certified Solutions Architect - Associate
+• Google Cloud Professional Developer
+• Certified Scrum Master (CSM)
+
+PROJECTS
+E-commerce Platform: Built scalable online marketplace using Django, React, and PostgreSQL
+• Implemented payment processing with Stripe API
+• Designed responsive UI with mobile-first approach
+• Achieved 99.9% uptime with load balancing
+
+Data Analytics Dashboard: Created real-time analytics tool using Python and D3.js
+• Processed 10GB+ daily data with Apache Spark
+• Built interactive visualizations for business insights
+• Reduced report generation time from hours to minutes
+
+
+

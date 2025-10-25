@@ -1,0 +1,26 @@
+{
+  "created_at": "2024-01-01T00:00:00",
+  "models": {
+    "tfidf_default": {
+      "type": "tfidf",
+      "path": "tfidf_models/default_tfidf.pkl",
+      "config_path": "model_configs/default_tfidf_config.json"
+    },
+    "embeddings_default": {
+      "type": "embeddings",
+      "path": "embeddings/default_embeddings.npy",
+      "metadata_path": "model_configs/default_embeddings_metadata.json"
+    },
+    "analysis_default": {
+      "type": "analysis",
+      "path": "saved_models/default_analysis.pkl"
+    }
+  }
+}
+
+
+
+
+
+
+

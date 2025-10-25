@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - ATS Resume Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-primary">
+                            <i class="fas fa-chart-line mr-2"></i>
+                            ATS Analyzer
+                        </h1>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/dashboard" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                        <a href="/#analyzer" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Analyze Resume</a>
+                        <a href="/#pricing" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+                        <a href="/logout" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-secondary">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Profile Info -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-user text-3xl text-white"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold text-gray-900" id="userName">Loading...</h2>
+                        <p class="text-gray-500" id="userEmail">Loading...</p>
+                    </div>
+                    
+                    <div class="mt-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Member since</span>
+                            <span class="text-sm font-medium text-gray-900" id="memberSince">Loading...</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Last login</span>
+                            <span class="text-sm font-medium text-gray-900" id="lastLogin">Loading...</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Current plan</span>
+                            <span class="text-sm font-medium text-gray-900" id="currentPlan">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subscription Info -->
+                <div class="bg-white rounded-lg shadow p-6 mt-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Subscription</h3>
+                    <div id="subscriptionInfo">
+                        <!-- Subscription details will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Settings -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900">Profile Settings</h3>
+                    </div>
+                    
+                    <div class="p-6">
+                        <!-- Personal Information -->
+                        <div class="mb-8">
+                            <h4 class="text-md font-semibold text-gray-900 mb-4">Personal Information</h4>
+                            <form id="profileForm" class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="first_name" class="block text-sm font-medium text-gray-700">First Name</label>
+                                        <input type="text" id="first_name" name="first_name" required
+                                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                    <div>
+                                        <label for="last_name" class="block text-sm font-medium text-gray-700">Last Name</label>
+                                        <input type="text" id="last_name" name="last_name" required
+                                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                    <input type="email" id="email" name="email" required
+                                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div class="flex justify-end">
+                                    <button type="submit" class="bg-primary text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors">
+                                        Update Profile
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Change Password -->
+                        <div class="mb-8">
+                            <h4 class="text-md font-semibold text-gray-900 mb-4">Change Password</h4>
+                            <form id="passwordForm" class="space-y-4">
+                                <div>
+                                    <label for="current_password" class="block text-sm font-medium text-gray-700">Current Password</label>
+                                    <input type="password" id="current_password" name="current_password" required
+                                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="new_password" class="block text-sm font-medium text-gray-700">New Password</label>
+                                    <input type="password" id="new_password" name="new_password" required
+                                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm New Password</label>
+                                    <input type="password" id="confirm_password" name="confirm_password" required
+                                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div class="flex justify-end">
+                                    <button type="submit" class="bg-primary text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors">
+                                        Change Password
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Account Actions -->
+                        <div class="border-t border-gray-200 pt-6">
+                            <h4 class="text-md font-semibold text-gray-900 mb-4">Account Actions</h4>
+                            <div class="space-y-4">
+                                <button onclick="exportData()" class="w-full md:w-auto bg-gray-200 text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 transition-colors">
+                                    <i class="fas fa-download mr-2"></i>
+                                    Export My Data
+                                </button>
+                                <button onclick="deleteAccount()" class="w-full md:w-auto bg-danger text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
+                                    <i class="fas fa-trash mr-2"></i>
+                                    Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Container -->
+    <div id="messageContainer" class="fixed top-4 right-4 z-50 hidden">
+        <div id="messageContent" class="rounded-md p-4 shadow-lg"></div>
+    </div>
+
+    <script>
+        // Load profile data
+        async function loadProfileData() {
+            try {
+                const response = await fetch('/api/profile');
+                const data = await response.json();
+                
+                document.getElementById('userName').textContent = `${data.first_name} ${data.last_name}`;
+                document.getElementById('userEmail').textContent = data.email;
+                document.getElementById('memberSince').textContent = new Date(data.created_at).toLocaleDateString();
+                document.getElementById('lastLogin').textContent = data.last_login ? new Date(data.last_login).toLocaleDateString() : 'Never';
+                
+                // Populate form fields
+                document.getElementById('first_name').value = data.first_name;
+                document.getElementById('last_name').value = data.last_name;
+                document.getElementById('email').value = data.email;
+                
+                // Load subscription info
+                loadSubscriptionInfo();
+            } catch (error) {
+                console.error('Error loading profile data:', error);
+            }
+        }
+
+        async function loadSubscriptionInfo() {
+            try {
+                const response = await fetch('/api/subscription/status');
+                const data = await response.json();
+                
+                if (data.subscription) {
+                    document.getElementById('currentPlan').textContent = data.subscription.plan.charAt(0).toUpperCase() + data.subscription.plan.slice(1);
+                    
+                    const subscriptionInfo = document.getElementById('subscriptionInfo');
+                    subscriptionInfo.innerHTML = `
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-500">Plan</span>
+                                <span class="text-sm font-medium text-gray-900">${data.subscription.plan.charAt(0).toUpperCase() + data.subscription.plan.slice(1)}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-500">Status</span>
+                                <span class="text-sm font-medium ${data.subscription.status === 'active' ? 'text-green-600' : 'text-red-600'}">${data.subscription.status}</span>
+                            </div>
+                            ${data.subscription.current_period_end ? `
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-500">Next billing</span>
+                                    <span class="text-sm font-medium text-gray-900">${new Date(data.subscription.current_period_end).toLocaleDateString()}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="mt-4">
+                            <button onclick="window.location.href='/#pricing'" class="w-full bg-primary text-white py-2 rounded-md hover:bg-secondary transition-colors">
+                                Manage Subscription
+                            </button>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading subscription info:', error);
+            }
+        }
+
+        // Profile form submission
+        document.getElementById('profileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                first_name: formData.get('first_name'),
+                last_name: formData.get('last_name'),
+                email: formData.get('email')
+            };
+            
+            try {
+                const response = await fetch('/api/profile', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                showMessage(result.success ? 'success' : 'error', result.success ? result.message : result.error);
+                
+                if (result.success) {
+                    loadProfileData(); // Reload data
+                }
+            } catch (error) {
+                showMessage('error', 'Failed to update profile. Please try again.');
+            }
+        });
+
+        // Password form submission
+        document.getElementById('passwordForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                current_password: formData.get('current_password'),
+                new_password: formData.get('new_password')
+            };
+            
+            if (data.new_password !== formData.get('confirm_password')) {
+                showMessage('error', 'New passwords do not match.');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/profile/password', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                showMessage(result.success ? 'success' : 'error', result.success ? result.message : result.error);
+                
+                if (result.success) {
+                    e.target.reset(); // Clear form
+                }
+            } catch (error) {
+                showMessage('error', 'Failed to change password. Please try again.');
+            }
+        });
+
+        function showMessage(type, message) {
+            const messageContainer = document.getElementById('messageContainer');
+            const messageContent = document.getElementById('messageContent');
+            
+            const bgColor = type === 'success' ? 'bg-green-50 border-green-200 text-green-700' : 'bg-red-50 border-red-200 text-red-700';
+            const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            
+            messageContent.innerHTML = `
+                <div class="${bgColor} border rounded-md p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="${icon}"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium">${message}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            messageContainer.classList.remove('hidden');
+            
+            setTimeout(() => {
+                messageContainer.classList.add('hidden');
+            }, 5000);
+        }
+
+        function exportData() {
+            // Implement data export functionality
+            showMessage('info', 'Data export feature coming soon!');
+        }
+
+        function deleteAccount() {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                showMessage('info', 'Account deletion feature coming soon!');
+            }
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadProfileData);
+    </script>
+</body>
+</html>
+
+

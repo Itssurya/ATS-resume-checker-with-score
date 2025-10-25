@@ -1,0 +1,17 @@
+{
+  "model_name": "default",
+  "created_at": "2025-09-29T10:57:53.830485",
+  "type": "tfidf",
+  "parameters": {
+    "stop_words": "english",
+    "ngram_range": [
+      1,
+      2
+    ],
+    "max_features": 1000,
+    "lowercase": true,
+    "min_df": 1,
+    "max_df": 0.95,
+    "vocabulary_size": 210
+  }
+}

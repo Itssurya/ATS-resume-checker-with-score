@@ -1,0 +1,23 @@
+# Hugging Face Models for Enhanced Resume Analysis
+# Install with: pip install -r requirements_huggingface.txt
+
+# Core Hugging Face libraries
+transformers>=4.30.0
+sentence-transformers>=2.2.2
+torch>=2.0.0
+tokenizers>=0.13.0
+
+# Additional dependencies for better performance
+accelerate>=0.20.0
+datasets>=2.12.0
+
+# Existing project dependencies (keep these)
+scikit-learn>=1.3.0
+nltk>=3.8.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Optional: For GPU acceleration (uncomment if you have CUDA)
+# torch-audio>=2.0.0
+# torchvision>=0.15.0
+

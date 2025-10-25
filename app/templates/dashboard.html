@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ATS Resume Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-primary">
+                            <i class="fas fa-chart-line mr-2"></i>
+                            ATS Analyzer
+                        </h1>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/#analyzer" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Analyze Resume</a>
+                        <a href="/#pricing" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+                        <a href="/profile" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Profile</a>
+                        <a href="/logout" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-secondary">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Welcome Section -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Welcome back!</h1>
+            <p class="text-gray-600">Track your resume analysis progress and optimize your job applications.</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-chart-line text-2xl text-primary"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-500">Total Analyses</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="totalAnalyses">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-trophy text-2xl text-warning"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-500">Best ATS Score</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="bestScore">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-upload text-2xl text-success"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-500">This Month</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="monthlyUploads">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-crown text-2xl text-accent"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-500">Plan</p>
+                        <p class="text-2xl font-semibold text-gray-900" id="currentPlan">Free</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- New Analysis -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Analysis</h3>
+                <p class="text-gray-600 mb-4">Upload a new resume and get instant ATS analysis.</p>
+                <button onclick="window.location.href='/#analyzer'" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition-colors">
+                    <i class="fas fa-plus mr-2"></i>
+                    Analyze New Resume
+                </button>
+            </div>
+
+            <!-- Plan Upgrade -->
+            <div class="bg-gradient-to-r from-primary to-secondary rounded-lg shadow p-6 text-white">
+                <h3 class="text-lg font-semibold mb-2">Upgrade Your Plan</h3>
+                <p class="text-blue-100 mb-4">Get more uploads, advanced features, and detailed reports.</p>
+                <button onclick="window.location.href='/#pricing'" class="w-full bg-white text-primary py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-crown mr-2"></i>
+                    View Plans
+                </button>
+            </div>
+        </div>
+
+        <!-- Recent Analyses -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900">Recent Analyses</h3>
+            </div>
+            <div class="p-6">
+                <div id="analysesList" class="space-y-4">
+                    <!-- Analyses will be loaded here -->
+                </div>
+                <div id="noAnalyses" class="text-center py-8 hidden">
+                    <i class="fas fa-file-alt text-4xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-500">No analyses yet. Start by analyzing your first resume!</p>
+                    <button onclick="window.location.href='/#analyzer'" class="mt-4 bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-colors">
+                        Analyze Resume
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                // Load subscription status
+                const subscriptionResponse = await fetch('/api/subscription/status');
+                const subscriptionData = await subscriptionResponse.json();
+                
+                if (subscriptionData.subscription) {
+                    document.getElementById('currentPlan').textContent = subscriptionData.subscription.plan.charAt(0).toUpperCase() + subscriptionData.subscription.plan.slice(1);
+                }
+                
+                if (subscriptionData.usage) {
+                    document.getElementById('monthlyUploads').textContent = subscriptionData.usage.uploads_this_month || 0;
+                }
+
+                // Load analyses
+                const analysesResponse = await fetch('/api/analyses');
+                const analysesData = await analysesResponse.json();
+                
+                if (analysesData.analyses && analysesData.analyses.length > 0) {
+                    document.getElementById('totalAnalyses').textContent = analysesData.total || 0;
+                    
+                    // Find best score
+                    const bestScore = Math.max(...analysesData.analyses.map(a => a.ats_score));
+                    document.getElementById('bestScore').textContent = bestScore;
+                    
+                    // Display analyses
+                    displayAnalyses(analysesData.analyses);
+                } else {
+                    document.getElementById('noAnalyses').classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+
+        function displayAnalyses(analyses) {
+            const analysesList = document.getElementById('analysesList');
+            
+            analysesList.innerHTML = analyses.map(analysis => `
+                <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-file-alt text-2xl text-primary"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-medium text-gray-900">${analysis.resume_filename}</h4>
+                            <p class="text-sm text-gray-500">${new Date(analysis.created_at).toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="text-right">
+                            <p class="text-lg font-semibold ${analysis.ats_score >= 70 ? 'text-green-600' : analysis.ats_score >= 50 ? 'text-yellow-600' : 'text-red-600'}">
+                                ${analysis.ats_score}
+                            </p>
+                            <p class="text-xs text-gray-500">ATS Score</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="viewAnalysis(${analysis.id})" class="text-primary hover:text-secondary">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button onclick="exportAnalysis(${analysis.id})" class="text-primary hover:text-secondary">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function viewAnalysis(analysisId) {
+            // Open analysis in new tab or modal
+            window.open(`/api/analyses/${analysisId}`, '_blank');
+        }
+
+        function exportAnalysis(analysisId) {
+            // Export PDF
+            window.open(`/api/export/pdf/${analysisId}`, '_blank');
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadDashboardData);
+    </script>
+</body>
+</html>
+
+
